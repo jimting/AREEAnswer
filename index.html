@@ -1,19 +1,61 @@
 <html>
 	<head>
-		<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<title>學術倫理過不了嗎?</title>
 		<script>
-		function readFile() 
-		{
-			data = $.get("answer.txt");
-			$("#result").append(data);
-		}
+		
+			var datas;
+			function init()
+			{	
+				//拿取資料
+				$.get("https://raw.githubusercontent.com/jimting/AREEAnswer/master/answer.txt", function(data, status)
+				{
+					//把資料用換行分開，這邊一題總共有八lines 自己分析ㄅ ㄏㄏ
+					datas = data.split('\n')
+					$( "#result" ).text("拿取題庫完成，請輸入關鍵字查詢題庫。");
+				});
+			}
+			function checkQuestion() 
+			{
+				//清空result區資料
+				$( "#result" ).text("");
+				
+				var input = $("#input").val();
+				var number = 0;
+				console.log(datas.length);
+				for(var i = 0; i < datas.length/8;i++)
+				{
+					var status = 0;
+					for(var j = 0; j < 8;j++)
+					{
+						var str = datas[i*8 + j];
+						console.log(str);
+						if(str.includes(input))
+							status = 1;
+					}
+					if(status == 1)
+						prtQ(i);
+				}
+				if
+				
+			}
+			function prtQ(number)
+			{
+				for(var i = 0 ; i < 8; i++)
+					$( "#result" ).append(datas[number*8+i] + "<br>");
+			}
 		</script>
 	</head>
-	<body onload=readFile()>
-		測試讀檔
+	<body onload=init()>
+		<div class="form-group">
+			<label for="input">輸入題目關鍵字</label>
+			<input type="text" class="form-control" id="input">
+		</div>
+		<button type="button" class="btn btn-primary btn-lg btn-block" onclick=checkQuestion()>查詢題目資料</button>
 		<div id="result">
-		
+			
 		</div>
 	</body>
 </html>
