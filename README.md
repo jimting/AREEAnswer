@@ -1,6 +1,6 @@
-# AREEAnswer
+# AREEAnswer - 學術倫理無法過關嗎？
 
-頁面在這裡
+使用頁面在這裡
 
 https://jimting.github.io/AREEAnswer/
 
