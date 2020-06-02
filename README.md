@@ -16,7 +16,7 @@ https://jimting.github.io/AREEAnswer/
 
 ----------
 
-# 目前題庫有261題，有些是重複的。
+# 目前題庫有278題，有些是重複的。
 
 ### answer.txt使用方式
 
