@@ -26,7 +26,6 @@
 				//拿取資料
 				$.get("https://raw.githubusercontent.com/jimting/AREEAnswer/master/answer.json", function(data, status)
 				{
-					//把資料用換行分開，這邊一題總共有八lines 自己分析ㄅ ㄏㄏ
 					datas = JSON.parse(data);
 					$( "#result" ).text("拿取題庫完成，請輸入關鍵字查詢題庫。");
 				});
