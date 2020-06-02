@@ -20,13 +20,14 @@
 		<script>
 		
 			var datas;
+			var data_json = [];
 			function init()
 			{	
 				//拿取資料
-				$.get("https://raw.githubusercontent.com/jimting/AREEAnswer/master/answer.txt", function(data, status)
+				$.get("https://raw.githubusercontent.com/jimting/AREEAnswer/master/answer.json", function(data, status)
 				{
 					//把資料用換行分開，這邊一題總共有八lines 自己分析ㄅ ㄏㄏ
-					datas = data.split('\n')
+					datas = JSON.parse(data);
 					$( "#result" ).text("拿取題庫完成，請輸入關鍵字查詢題庫。");
 				});
 			}
@@ -34,29 +35,26 @@
 			{
 				//清空result區資料
 				$( "#result" ).text("");
-				
+				data_json = [];
 				var input = $("#input").val();
-				var number = 0;
 				console.log(datas.length);
-				for(var i = 0; i < datas.length/8;i++)
+				for(var i = 0; i < datas.length;i++)
 				{
-					var status = 0;
-					for(var j = 0; j < 8;j++)
+					var str = JSON.stringify(datas[i]);
+					if(str.includes(input))
 					{
-						var str = datas[i*8 + j];
-						console.log(str);
-						if(str.includes(input))
-							status = 1;
-					}
-					if(status == 1)
 						prtQ(i);
+					}
 				}
 				
 			}
 			function prtQ(number)
 			{
-				for(var i = 0 ; i < 8; i++)
-					$( "#result" ).append(datas[number*8+i] + "<br>");
+				var result = "===<br>("+number+") 題目：<br>"+datas[number].name+"<br>";
+				result += "選項與答案：<br>";
+				for(var i = 0;i < datas[number].options.length;i++)
+					result += datas[number].options[i]+"<br>";
+				$( "#result" ).append(result);
 			}
 		</script>
 	</head>
