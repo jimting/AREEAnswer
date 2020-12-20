@@ -14,7 +14,7 @@
 			{
 				position: fixed;
 				bottom: 8px;
-				right: 8px;
+				left: 8px;
 			}
 		</style>
 		<script>
@@ -58,14 +58,16 @@
 		</script>
 	</head>
 	<body onload=init()>
-		<div class="form-group">
-			<label for="input">輸入題目關鍵字</label>
-			<input type="text" class="form-control" id="input">
-		</div>
-		<button type="button" class="btn btn-primary btn-lg btn-block" onclick=checkQuestion()>查詢題目資料</button>
-		<div id="result">
-			
-		</div>
-		<div id="footer">Github:<a href="https://github.com/jimting/AREEAnswer">JT</a></div>
+    <div class="container">
+  		<div class="form-group">
+  			<label for="input">輸入題目關鍵字</label>
+  			<input type="text" class="form-control" id="input">
+  		</div>
+  		<button type="button" class="btn btn-primary btn-lg btn-block" onclick=checkQuestion()>查詢題目資料</button>
+  		<div id="result">
+  			
+  		</div>
+  		<div id="footer">Github:<a href="https://github.com/jimting/AREEAnswer">JT</a></div>
+    </div>
 	</body>
 </html>
